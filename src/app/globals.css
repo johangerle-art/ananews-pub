@@ -1,13 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #e8e8e8;
-  --accent-motstand: #22c55e;
-  --accent-overvakning: #ef4444;
-  --accent-klimat: #84cc16;
-  --accent-ekonomi: #f59e0b;
-  --accent-global: #3b82f6;
+  --background: #060000;
+  --foreground: #ffe7a8;
+  --primary-red: #c81919;
+  --secondary-red: #ff5a5f;
+  --accent-yellow: #ffd84d;
 }
 
 @theme inline {
@@ -16,9 +14,12 @@
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
+  background-image: radial-gradient(
+    circle at 20% 10%,
+    rgba(200, 25, 25, 0.2) 0%,
+    rgba(6, 0, 0, 0) 55%
+  );
   color: var(--foreground);
   font-family: system-ui, -apple-system, sans-serif;
 }
-
-/* Min touch-target 44px för mobil – NewsCard hanterar detta */

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "ananews.pub – Anarkistisk global morgonöversikt",
+  title: "Streck för streck – Hanzi-träning HSK 1-3",
   description:
-    "Maktkritisk nyhetsöversikt inspirerad av Joseph Toscano. Motstånd, övervakning, klimat, ekonomi.",
+    "Mobil app för att träna kinesiska tecken i rätt streckordning med pinyin, betydelse och pedagogiska stödtexter.",
 };
 
 export default function RootLayout({
@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="sv">
-      <body className="min-h-screen bg-[#0a0a0a] text-[#e8e8e8] antialiased">
+      <body className="min-h-screen bg-[var(--background)] text-[var(--foreground)] antialiased">
         {children}
       </body>
     </html>
