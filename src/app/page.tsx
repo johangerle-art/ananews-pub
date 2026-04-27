@@ -69,6 +69,7 @@ export default function Home() {
   const [writerError, setWriterError] = useState<string | null>(null);
   const [completedCount, setCompletedCount] = useState(0);
   const [focusStreak, setFocusStreak] = useState(0);
+  const initialHanziRef = useRef(currentCharacter.hanzi);
 
   const availableCharacters = useMemo(
     () => filterCharactersByLevels(selectedLevels),
@@ -169,13 +170,16 @@ export default function Home() {
       setWriterError(null);
       setWriterReady(false);
       try {
-        const module = await import("hanzi-writer");
+        const hanziWriterModule = await import("hanzi-writer");
         if (cancelled) {
           return;
         }
 
-        const HanziWriter = module.default;
-        writerRef.current = HanziWriter.create(boardRef.current, currentCharacter.hanzi, {
+        const HanziWriter = hanziWriterModule.default;
+        writerRef.current = HanziWriter.create(
+          boardRef.current,
+          initialHanziRef.current,
+          {
           width: 300,
           height: 300,
           padding: 16,
@@ -187,7 +191,8 @@ export default function Home() {
           radicalColor: "#ff5a5f",
           drawingColor: "#ff5a5f",
           outlineColor: "#4a1116",
-        }) as HanziWriterLike;
+        }
+        ) as HanziWriterLike;
 
         setWriterReady(true);
       } catch (error) {
